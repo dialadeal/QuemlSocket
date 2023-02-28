@@ -1,0 +1,41 @@
+﻿using System;
+using Twilio.TwiML;
+using Twilio.TwiML.Voice;
+using Task = System.Threading.Tasks.Task;
+
+namespace WorkerServiceSuperSocket.Services
+{
+    public class FirstIvr
+    {
+        Client _client;
+        SecondIvr _secondIvr;
+
+        public FirstIvr(Client client, SecondIvr secondIvr)
+        {
+            _client = client;
+            _secondIvr = secondIvr;
+        }
+
+        private static Uri CurentAction=new Uri("CollectUserInfo", UriKind.Relative);
+
+        public async Task CollectUserInfo()
+        {
+            var context = await _client.GetContextAsync();
+            var response = new VoiceResponse();
+        
+            response.Append(new Gather(action:CurentAction).Append(new Say("Welcome to the Twilio IVR demo. Please enter your account number, followed by the pound sign.")));
+            // response.Append(new Redirect( ));
+
+            var input =await _client.GetInputAsync(response.ToString());
+            response = new VoiceResponse();
+            response.Append(new Say("You entered " + input["digits"] + ". Thank you."));
+        
+            response.Append(new Redirect(CurentAction));
+        
+            var input2 = await _client.GetInputAsync(response.ToString());
+
+            await _secondIvr.Test2();
+        }
+    }
+}
+
