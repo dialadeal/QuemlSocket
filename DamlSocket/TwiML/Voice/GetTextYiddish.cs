@@ -58,7 +58,7 @@ namespace Twilio.TwiML.Voice
                       string speechTimeout = null,
                       int? maxSpeechTime = null,
                       string finishOnKey = null,
-                      int? numDigits = null) : base("GetText")
+                      int? numDigits = null) : base("GetTextYiddish")
         {
             this.Action = action;
             this.Timeout = timeout;
@@ -133,9 +133,13 @@ namespace Twilio.TwiML.Voice
         /// <param name="url"> Media URL, the body of the TwiML Element. </param>
         /// <param name="loop"> Times to loop media </param>
         /// <param name="digits"> Play DTMF tones for digits </param>
-        public GetTextYiddish Play(Uri url = null, int? loop = null, string digits = null)
+        public GetTextYiddish Play(Uri url = null, int? loop = null, string digits = null , bool isFunctionPlay=false)
         {
             var newChild = new Play(url, loop, digits);
+            if (isFunctionPlay)
+            {
+                newChild.SetOption("isFunctionPlay", true);
+            }
             this.Append(newChild);
             return this;
         }
