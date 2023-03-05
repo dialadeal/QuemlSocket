@@ -1,9 +1,10 @@
 ﻿using System;
 using Twilio.TwiML;
 using Twilio.TwiML.Voice;
+using Client = DamlSocket.Services.Client;
 using Task = System.Threading.Tasks.Task;
 
-namespace WorkerServiceSuperSocket.Services
+namespace DamlSocketTest.Services
 {
     public class FirstIvr
     {

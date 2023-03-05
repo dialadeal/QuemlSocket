@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using DamlSocket;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using WorkerServiceSuperSocket;
 
-namespace WorkerServiceTest
+namespace DamlSocketTest
 {
     public class Worker : BackgroundService
     {

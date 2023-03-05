@@ -5,11 +5,70 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using Twilio.Converters;
+using Twilio.Types;
 
 namespace Twilio.TwiML.Voice
 {
     public class GetText : TwiML
     {
+        
+         public sealed class LanguageEnum : StringEnum
+        {
+            private LanguageEnum(string value) : base(value)
+            {
+            }
+
+            public LanguageEnum()
+            {
+            }
+
+            public static implicit operator LanguageEnum(string value)
+            {
+                return new LanguageEnum(value);
+            }
+
+            public static readonly LanguageEnum Yiddish = new LanguageEnum("yiddish");
+            public static readonly LanguageEnum EnUs = new LanguageEnum("en-US");
+        }
+         
+        public sealed class ModeEnum : StringEnum
+        {
+            private ModeEnum(string value) : base(value)
+            {
+            }
+
+            public ModeEnum()
+            {
+            }
+
+            public static implicit operator ModeEnum(string value)
+            {
+                return new ModeEnum(value);
+            }
+
+            public static readonly ModeEnum TimeSeperated = new ModeEnum("time-seperated");
+            public static readonly ModeEnum StarSeperated = new ModeEnum("star-seperated");
+        }
+        
+        public sealed class AvailableMenusEnum : StringEnum
+        {
+            private AvailableMenusEnum(string value) : base(value)
+            {
+            }
+
+            public AvailableMenusEnum()
+            {
+            }
+
+            public static implicit operator AvailableMenusEnum(string value)
+            {
+                return new AvailableMenusEnum(value);
+            }
+
+            public static readonly AvailableMenusEnum Main = new AvailableMenusEnum("main");
+            public static readonly AvailableMenusEnum Shortcuts = new AvailableMenusEnum("Shortcuts");
+            public static readonly AvailableMenusEnum Exit = new AvailableMenusEnum("Exit");
+        }
         /// <summary>
         /// Action URL
         /// </summary>
@@ -42,6 +101,13 @@ namespace Twilio.TwiML.Voice
         /// Number of digits to collect
         /// </summary>
         public int? NumDigits { get; set; }
+        
+        /// <summary>
+        /// Mode of the GetText
+        ///
+        public GetText.ModeEnum Mode { get; set; }
+        
+        public GetText.LanguageEnum Language { get; set; }
 
         /// <summary>
         /// Create a new Gather
@@ -119,9 +185,14 @@ namespace Twilio.TwiML.Voice
         public GetText Say(string message = null,
                           Say.VoiceEnum voice = null,
                           int? loop = null,
-                          Say.LanguageEnum language = null)
+                          Say.LanguageEnum language = null,
+                          GetText.AvailableMenusEnum forMenu = null)
         {
             var newChild = new Say(message, voice, loop, language);
+            if (forMenu != null)
+            {
+                newChild.SetOption(nameof(forMenu), forMenu);
+            }
             this.Append(newChild);
             return this;
         }
@@ -133,9 +204,13 @@ namespace Twilio.TwiML.Voice
         /// <param name="url"> Media URL, the body of the TwiML Element. </param>
         /// <param name="loop"> Times to loop media </param>
         /// <param name="digits"> Play DTMF tones for digits </param>
-        public GetText Play(Uri url = null, int? loop = null, string digits = null)
+        public GetText Play(Uri url = null, int? loop = null, string digits = null, GetText.AvailableMenusEnum forMenu = null)
         {
             var newChild = new Play(url, loop, digits);
+            if (forMenu != null)
+            {
+                newChild.SetOption(nameof(forMenu), forMenu);
+            }
             this.Append(newChild);
             return this;
         }

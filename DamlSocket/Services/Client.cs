@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 
-namespace WorkerServiceSuperSocket.Services
+namespace DamlSocket.Services
 {
     public class Client
     {

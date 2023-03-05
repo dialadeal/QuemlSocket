@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DamlSocket.DiExtention;
+using DamlSocketTest.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using WorkerServiceSuperSocket.DiExtention;
-using WorkerServiceSuperSocket.Services;
 
-namespace WorkerServiceTest
+namespace DamlSocketTest
 {
     public class Program
     {

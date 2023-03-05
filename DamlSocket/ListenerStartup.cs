@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using DamlSocket.Services;
 using Microsoft.Extensions.DependencyInjection;
 using WebSocketSharp.Server;
-using WorkerServiceSuperSocket.Services;
 
-namespace WorkerServiceSuperSocket
+namespace DamlSocket
 {
     public class ListenerStartup
     {
@@ -18,6 +18,9 @@ namespace WorkerServiceSuperSocket
         public static  List<object> _services = new List<object>();
         
         public static CreateSession _createSession;
+        public static string Port = "4649";
+        
+        
 
         public ListenerStartup(IServiceProvider serviceProvider)
         {
@@ -27,7 +30,7 @@ namespace WorkerServiceSuperSocket
 
         public void Start()
         {
-            _server = new WebSocketServer(4649);
+            _server = new WebSocketServer(Port);
             _server.AddWebSocketService<Behaviors.JsonRpc>("/json-rpc");
 
             // Start the server and keep it running until the user presses a key.

@@ -2,7 +2,7 @@
 using System.Collections.Concurrent;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace WorkerServiceSuperSocket
+namespace DamlSocket
 {
     public class CallScope
     {

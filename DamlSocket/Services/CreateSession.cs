@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using DamlSocket.Behaviors;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Linq;
-using WorkerServiceSuperSocket.Behaviors;
 
-namespace WorkerServiceSuperSocket.Services
+namespace DamlSocket.Services
 {
     public class CreateSession 
     {

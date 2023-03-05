@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 using WebSocketSharp;
 using WebSocketSharp.Server;
 
-namespace WorkerServiceSuperSocket.Behaviors
+namespace DamlSocket.Behaviors
 {
     public class JsonRpc : WebSocketBehavior
     {

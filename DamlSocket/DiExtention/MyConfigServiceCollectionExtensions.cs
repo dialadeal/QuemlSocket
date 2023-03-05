@@ -1,29 +1,27 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using System.Reflection;
+using DamlSocket.Services;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using WorkerServiceSuperSocket.Services;
 
-namespace WorkerServiceSuperSocket.DiExtention
+namespace DamlSocket.DiExtention
 {
     public static class MyConfigServiceCollectionExtensions
     {
         public static IServiceCollection AddConfig(
             this IServiceCollection services, IConfiguration config)
         {
-        
-
             return services;
         }
 
         public static IServiceCollection AddDamlSocket(
-            this IServiceCollection services)
+            this IServiceCollection services, string port = "4649")
         {
+            ListenerStartup.Port = port;
             services.AddSingleton<CreateSession>();
             services.AddSingleton<ListenerStartup>();
-
             services.AddScoped<Client>();
 
             return services;
         }
     }
 }
-

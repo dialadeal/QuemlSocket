@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace WorkerServiceSuperSocket.Behaviors
+namespace DamlSocket.Behaviors
 {
     public class Request
     {
