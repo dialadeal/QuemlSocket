@@ -18,7 +18,7 @@ namespace DamlSocket
         public static  List<object> _services = new List<object>();
         
         public static CreateSession _createSession;
-        public static string Port = "4649";
+        public static int Port = 4649;
         
         
 

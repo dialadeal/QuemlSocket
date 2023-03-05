@@ -14,7 +14,7 @@ namespace DamlSocket.DiExtention
         }
 
         public static IServiceCollection AddDamlSocket(
-            this IServiceCollection services, string port = "4649")
+            this IServiceCollection services, int port = 4649)
         {
             ListenerStartup.Port = port;
             services.AddSingleton<CreateSession>();
