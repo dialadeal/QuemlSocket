@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using DamlSocket.DiExtention;
 using DamlSocketTest.Services;
+using HazmunaService.Ivrs;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -23,6 +24,7 @@ namespace DamlSocketTest
                     services.AddDamlSocket();
                     services.AddScoped<FirstIvr>();
                     services.AddScoped<SecondIvr>();
+                    services.AddScoped<WelcomeIvr>();
                     services.AddHostedService<Worker>();
                 });
     }

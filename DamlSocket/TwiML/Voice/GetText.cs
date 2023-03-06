@@ -66,8 +66,8 @@ namespace Twilio.TwiML.Voice
             }
 
             public static readonly AvailableMenusEnum Main = new AvailableMenusEnum("main");
-            public static readonly AvailableMenusEnum Shortcuts = new AvailableMenusEnum("Shortcuts");
-            public static readonly AvailableMenusEnum Exit = new AvailableMenusEnum("Exit");
+            public static readonly AvailableMenusEnum Shortcuts = new AvailableMenusEnum("shortcuts");
+            public static readonly AvailableMenusEnum Exit = new AvailableMenusEnum("exit");
         }
         /// <summary>
         /// Action URL
@@ -124,7 +124,9 @@ namespace Twilio.TwiML.Voice
                       string speechTimeout = null,
                       int? maxSpeechTime = null,
                       string finishOnKey = null,
-                      int? numDigits = null) : base("GetText")
+                      int? numDigits = null,
+                      LanguageEnum language=null,
+                      ModeEnum mode=null) : base("GetText")
         {
             this.Action = action;
             this.Timeout = timeout;
@@ -173,6 +175,15 @@ namespace Twilio.TwiML.Voice
             {
                 attributes.Add(new XAttribute("numDigits", this.NumDigits.ToString()));
             }
+            if(this.Mode != null)
+            {
+                attributes.Add(new XAttribute("mode", this.Mode.ToString()));
+            }
+            if(this.Language != null)
+            {
+                attributes.Add(new XAttribute("language", this.Language.ToString()));
+            }
+            
             return attributes;
         }
         /// <summary>
