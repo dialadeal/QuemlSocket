@@ -24,6 +24,22 @@ namespace HazmunaService.Ivrs
         {
             var context = await _client.GetContextAsync();
             var response = new VoiceResponse();
+            
+            // recrod first name
+            var record = new Record();
+            record.Append(new Say("Welcome to Hazmuna, the best way to get your Hazmana. please enter your first name! "));
+            
+            response.Append(record);
+            var result = await _client.GetInputAsync(response.ToString());
+            
+            //play back first name
+            response = new VoiceResponse();
+            response.Append(new Play(new Uri(result["path"].ToString(), UriKind.Relative)));
+            
+            result = await _client.GetInputAsync(response.ToString());
+            
+            
+
             var getTextYiddish = new GetText()
             {
                 Mode = GetText.ModeEnum.StarSeperated,
@@ -40,7 +56,7 @@ namespace HazmunaService.Ivrs
                 forMenu: GetText.AvailableMenusEnum.Exit);
 
             response.Append(getTextYiddish);
-            var result = await _client.GetInputAsync(response.ToString());
+            result = await _client.GetInputAsync(response.ToString());
 
             response = new VoiceResponse();
             response.Append(new Hangup());

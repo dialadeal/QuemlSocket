@@ -7,7 +7,7 @@ using Newtonsoft.Json.Linq;
 
 namespace DamlSocket.Services
 {
-    public class CreateSession 
+    public class CreateSession
     {
         IServiceProvider _serviceProvider;
 
@@ -15,9 +15,6 @@ namespace DamlSocket.Services
         {
             _serviceProvider = serviceProvider;
         }
-
-
-      
 
 
         public string welcome(Request request)

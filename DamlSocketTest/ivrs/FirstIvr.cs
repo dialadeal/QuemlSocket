@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Twilio.TwiML;
 using Twilio.TwiML.Voice;
 using Client = DamlSocket.Services.Client;
@@ -24,12 +25,12 @@ namespace DamlSocketTest.Services
             var context = await _client.GetContextAsync();
             var response = new VoiceResponse();
         
-            response.Append(new Gather(action:CurentAction).Append(new Say("Welcome to the Twilio IVR demo. Please enter your account number, followed by the pound sign.")));
+            response.Append(new Gather(input:new List<Gather.InputEnum>() { Gather.InputEnum.Dtmf }).Append(new Say("Welcome to the Twilio IVR demo. Please enter your account number, followed by the pound sign.")));
             // response.Append(new Redirect( ));
 
             var input =await _client.GetInputAsync(response.ToString());
             response = new VoiceResponse();
-            response.Append(new Say("You entered " + input["digits"] + ". Thank you."));
+            response.Append(new Say("You entered " + input["text"] + ". Thank you."));
         
             response.Append(new Redirect(CurentAction));
         
