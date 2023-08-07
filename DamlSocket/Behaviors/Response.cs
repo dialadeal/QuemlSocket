@@ -10,7 +10,7 @@ namespace DamlSocket.Behaviors
     {
         [JsonProperty("jsonrpc", Required = Required.Always)]
         public string JSONRPC { get; set; } = "2.0";
-        [JsonProperty("id", Required = Required.Always)]
+        [JsonProperty("id", Required = Required.AllowNull)]
         public string ID { get; set; }
         [JsonProperty("error", NullValueHandling = NullValueHandling.Ignore)]
         public RPCResponseError Error { get; set; }

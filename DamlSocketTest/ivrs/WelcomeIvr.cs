@@ -60,7 +60,7 @@ namespace HazmunaService.Ivrs
 
             response = new VoiceResponse();
             response.Append(new Hangup());
-            await _client.GetInputAsync(response.ToString());
+             _client.GetInputAsync(response.ToString());
         }
     }
 }
