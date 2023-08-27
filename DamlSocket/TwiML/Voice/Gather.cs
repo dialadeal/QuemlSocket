@@ -260,6 +260,8 @@ namespace Twilio.TwiML.Voice
         /// Use enhanced speech model
         /// </summary>
         public bool? Enhanced { get; set; }
+        
+        public bool? ConfirmInput { get; set; }
 
         /// <summary>
         /// Create a new Gather
@@ -300,7 +302,8 @@ namespace Twilio.TwiML.Voice
                       bool? debug = null,
                       bool? actionOnEmptyResult = null,
                       Gather.SpeechModelEnum speechModel = null,
-                      bool? enhanced = null) : base("Gather")
+                      bool? enhanced = null,
+                      bool? confirmInput = null) : base("Gather")
         {
             this.Input = input;
             this.Action = action;
@@ -320,6 +323,7 @@ namespace Twilio.TwiML.Voice
             this.ActionOnEmptyResult = actionOnEmptyResult;
             this.SpeechModel = speechModel;
             this.Enhanced = enhanced;
+            this.ConfirmInput = confirmInput;
         }
 
         /// <summary>
@@ -400,6 +404,12 @@ namespace Twilio.TwiML.Voice
             {
                 attributes.Add(new XAttribute("enhanced", this.Enhanced.Value.ToString().ToLower()));
             }
+            if(this.ConfirmInput != null)
+            {
+                attributes.Add(new XAttribute("confirmInput", this.ConfirmInput.Value.ToString().ToLower()));
+            }
+            
+            
             return attributes;
         }
 
