@@ -3,7 +3,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Xml.Linq;
-using Microsoft.AspNetCore.Mvc;
 
 namespace Twilio.TwiML
 {
@@ -170,10 +169,6 @@ namespace Twilio.TwiML
             return writer.GetStringBuilder().ToString();
         }
 
-        public ActionResult ToTwimlResult()
-        {
-            return new ContentResult { Content = this.ToString(), ContentType = "text/xml" };
-        }
     }
 
     /// <summary>

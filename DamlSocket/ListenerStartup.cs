@@ -8,13 +8,13 @@ using DamlSocket.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using WebSocketSharp.Server;
+// using WebSocketSharp.Server;
 
 namespace DamlSocket
 {
     public class ListenerStartup
     {
-        WebSocketServer _server;
+        // WebSocketServer _server;
         IServiceProvider _serviceProvider;
         public static List<object> _services = new List<object>();
 
