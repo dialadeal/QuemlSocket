@@ -9,6 +9,7 @@ using System.IO;
 using System.Text;
 using System.Xml.Linq;
 using Twilio.Converters;
+using Twilio.Types;
 
 namespace Twilio.TwiML.Voice
 {
@@ -18,6 +19,20 @@ namespace Twilio.TwiML.Voice
     /// </summary>
     public class Redirect : TwiML
     {
+        
+        public sealed class ClientTypeEnum : StringEnum
+        {
+            private ClientTypeEnum(string value) : base(value) {}
+            public ClientTypeEnum() {}
+            public static implicit operator ClientTypeEnum(string value)
+            {
+                return new ClientTypeEnum(value);
+            }
+
+            public static readonly ClientTypeEnum Rest = new ClientTypeEnum("rest");
+            public static readonly ClientTypeEnum Socket = new ClientTypeEnum("socket");
+        }
+        
         /// <summary>
         /// Redirect URL
         /// </summary>
@@ -26,6 +41,17 @@ namespace Twilio.TwiML.Voice
         /// Redirect URL method
         /// </summary>
         public Twilio.Http.HttpMethod Method { get; set; }
+        
+        /// <summary>
+        /// this is used for socket method redirect
+        /// enter the method name you want the socket to call
+        /// </summary>
+        public string SocketMethod { get; set; }
+        
+        /// <summary>
+        /// set the client type to switch between socket and http
+        /// </summary>
+        public ClientTypeEnum ClientType { get; set; } 
 
         /// <summary>
         /// Create a new Redirect
@@ -56,6 +82,17 @@ namespace Twilio.TwiML.Voice
             {
                 attributes.Add(new XAttribute("method", this.Method.ToString()));
             }
+            
+            if (this.SocketMethod != null)
+            {
+                attributes.Add(new XAttribute("socket_method", this.SocketMethod.ToString()));
+            }
+            
+            if (this.ClientType != null)
+            {
+                attributes.Add(new XAttribute("client_type", this.ClientType.ToString()));
+            }
+            
             return attributes;
         }
 
