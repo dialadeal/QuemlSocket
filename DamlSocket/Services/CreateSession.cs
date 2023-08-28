@@ -39,6 +39,8 @@ namespace DamlSocket.Services
                         .Invoke(typeInstance, null) as Task);
                     
                     client.CallInProgress = false;
+                    client.TcsResponse = new TaskCompletionSource<string>();
+                    client.TcsInit = new TaskCompletionSource<JObject>();
                 });
                 client.SetContext(request.Parameters as JObject);
             }

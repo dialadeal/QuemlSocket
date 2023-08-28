@@ -29,6 +29,14 @@ namespace DamlSocket.Services
             Tcs = new TaskCompletionSource<JObject>();
             return param;
         }
+        
+        public void Execute(string response)
+        {
+            if (response != null)
+                TcsResponse.SetResult(response);
+            
+            Tcs = new TaskCompletionSource<JObject>();
+        }
 
         public async Task<string> GetResponseAsync()
         {
