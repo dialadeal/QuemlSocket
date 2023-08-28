@@ -37,6 +37,8 @@ namespace DamlSocket.Services
                 {
                     await (type.GetMethods().First(x => x.Name.ToLower() == request.Method.ToLower())
                         .Invoke(typeInstance, null) as Task);
+                    
+                    client.CallInProgress = false;
                 });
                 client.SetContext(request.Parameters as JObject);
             }
