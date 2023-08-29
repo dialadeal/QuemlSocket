@@ -25,16 +25,23 @@ namespace DamlSocket.Services
             {
                 throw new TimeoutException();
             }
-            
+
             Tcs = new TaskCompletionSource<JObject>();
             return param;
         }
-        
-        public void Execute(string response)
+
+        public void ExecuteRedirect(string response)
         {
             if (response != null)
+            {
                 TcsResponse.SetResult(response);
-            
+                
+                
+                CallInProgress = false;
+                TcsResponse = new TaskCompletionSource<string>();
+                TcsInit = new TaskCompletionSource<JObject>();
+            }
+
             Tcs = new TaskCompletionSource<JObject>();
         }
 
@@ -56,4 +63,3 @@ namespace DamlSocket.Services
         }
     }
 }
-

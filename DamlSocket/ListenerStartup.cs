@@ -186,7 +186,7 @@ namespace DamlSocket
                             request = Request.Parse(requestString);
                             ListenerStartup._logger.LogInformation($"Request: {requestString}");
 
-                            var response = ListenerStartup._createSession.welcome(request);
+                            var response = ListenerStartup._createSession.welcome(request).ConfigureAwait(false).GetAwaiter().GetResult();
 
                             ListenerStartup._logger.LogInformation($"Response: {response}");
 

@@ -17,14 +17,13 @@ namespace DamlSocket.Services
         }
 
 
-        public string welcome(Request request)
+        public async Task<string> welcome(Request request)
         {
             var types = AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(s => s.GetTypes());
 
-            var type = types.Where(x =>
-                    x.GetMethods().Any(c => string.Equals(c.Name, request.Method, StringComparison.OrdinalIgnoreCase)))
-                .FirstOrDefault();
+            var type = types
+                .FirstOrDefault(x => x.GetMethods().Any(c => string.Equals(c.Name, request.Method, StringComparison.OrdinalIgnoreCase)));
 
             var scope = CallScope.CreateOrGetScope((request.Parameters as JObject)["callSid"].ToString(),
                 _serviceProvider);
@@ -37,10 +36,7 @@ namespace DamlSocket.Services
                 {
                     await (type.GetMethods().First(x => x.Name.ToLower() == request.Method.ToLower())
                         .Invoke(typeInstance, null) as Task);
-                    
-                    client.CallInProgress = false;
-                    client.TcsResponse = new TaskCompletionSource<string>();
-                    client.TcsInit = new TaskCompletionSource<JObject>();
+
                 });
                 client.SetContext(request.Parameters as JObject);
             }
@@ -50,7 +46,7 @@ namespace DamlSocket.Services
             }
 
 
-            var response = client.GetResponseAsync().Result;
+            var response = await client.GetResponseAsync();
 
             client.CallInProgress = true;
             return response;
