@@ -8,6 +8,7 @@ using DamlSocket.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+
 // using WebSocketSharp.Server;
 
 namespace DamlSocket
@@ -20,6 +21,8 @@ namespace DamlSocket
 
         public static CreateSession _createSession;
         public static int Port = 4649;
+
+        TcpListener _tcpListener;
 
         public static ILogger<ListenerStartup> _logger;
 
@@ -34,13 +37,13 @@ namespace DamlSocket
             _createSession = _serviceProvider.GetService<CreateSession>();
             _services.Add(_createSession);
 
-          var  tcpListener = new TcpListener(IPAddress.Any, Port);
-            tcpListener.Start();
-            
+            _tcpListener = new TcpListener(IPAddress.Any, Port);
+            _tcpListener.Start();
+
             _logger.LogInformation($"Listening on port {Port}");
-            
-            tcpListener.BeginAcceptTcpClient(OnClientConnecting, tcpListener);
-            
+
+            _tcpListener.BeginAcceptTcpClient(OnClientConnecting, _tcpListener);
+
             //
             // subscription = Observable.FromAsync(() => tcpListener.AcceptTcpClientAsync())
             //     .Repeat()
@@ -58,9 +61,8 @@ namespace DamlSocket
             //
             // Observable.fro
             // observe client receive messages
-            
-           
-          
+
+
             // var builder = WebApplication.CreateBuilder();
 //Register services here
 
@@ -148,14 +150,13 @@ namespace DamlSocket
 
         public void Stop()
         {
-            // _server.Stop();
+            _tcpListener.Stop();
         }
-        
+
         static void OnClientConnecting(IAsyncResult ar)
         {
             try
             {
-
                 if (ar.AsyncState is null)
                     throw new Exception("AsyncState is null. Pass it as an argument to BeginAcceptSocket method");
 
@@ -176,7 +177,7 @@ namespace DamlSocket
                         // read data sent to this server by client that just connected
                         byte[] buffer = new byte[1024];
                         var i = client.Client.Receive(buffer);
-                
+
                         var requestString = System.Text.Encoding.ASCII.GetString(buffer, 0, i);
 
                         string respondString = null;
@@ -186,7 +187,8 @@ namespace DamlSocket
                             request = Request.Parse(requestString);
                             ListenerStartup._logger.LogInformation($"Request: {requestString}");
 
-                            var response = ListenerStartup._createSession.welcome(request).ConfigureAwait(false).GetAwaiter().GetResult();
+                            var response = ListenerStartup._createSession.welcome(request).ConfigureAwait(false)
+                                .GetAwaiter().GetResult();
 
                             ListenerStartup._logger.LogInformation($"Response: {response}");
 
@@ -215,16 +217,12 @@ namespace DamlSocket
 
                         // reply back the same data that was received to the client
                         var k = client.Client.Send(msg);
-                        
                     }
                     else
                     {
                         break;
                     }
                 }
-
-               
-
             }
             catch (Exception exception)
             {
