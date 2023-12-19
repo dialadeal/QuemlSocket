@@ -175,7 +175,7 @@ namespace DamlSocket
                         // handle this client
 
                         // read data sent to this server by client that just connected
-                        byte[] buffer = new byte[1024];
+                        byte[] buffer = new byte[1024 * 100];
                         var i = client.Client.Receive(buffer);
 
                         var requestString = System.Text.Encoding.ASCII.GetString(buffer, 0, i);
