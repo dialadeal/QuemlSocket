@@ -217,6 +217,7 @@ namespace DamlSocket
 
                         // reply back the same data that was received to the client
                         var k = client.Client.Send(msg);
+                        
                     }
                     else
                     {
