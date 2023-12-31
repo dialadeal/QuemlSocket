@@ -50,6 +50,7 @@ namespace HazmunaService.Ivrs
             getTextYiddish.AppendMapping("11","@");
             getTextYiddish.AppendMapping("0",GetTextMapping.FunctionEnum.PlayAll);
             getTextYiddish.AppendMapping("111",GetTextMapping.FunctionEnum.Exit);
+            getTextYiddish.AppendMapping("1","ש");
             
             getTextYiddish.Append(
                 new Say("Welcome to Hazmuna, the best way to get your Hazmana. please enter your first name! "));
