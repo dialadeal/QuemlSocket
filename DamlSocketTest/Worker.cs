@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using DamlSocket;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using WorkerServiceTest.Rest;
 
 namespace DamlSocketTest
 {
@@ -17,11 +18,12 @@ namespace DamlSocketTest
         public Worker(ILogger<Worker> logger, ListenerStartup listenerStartup)
         {
             _logger = logger;
-            _listenerStartup=listenerStartup;
+            _listenerStartup = listenerStartup;
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
+            new SendCall().Send();
             _listenerStartup.Start();
         }
     }

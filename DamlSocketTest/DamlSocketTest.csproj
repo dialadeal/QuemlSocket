@@ -3,8 +3,8 @@
     <PropertyGroup>
         <UserSecretsId>dotnet-WorkerServiceTest-3F1B4458-A8F5-421C-AFA6-7A1398BFBF5E</UserSecretsId>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-        <TargetFrameworks>net5.0;net7.0</TargetFrameworks>
         <RootNamespace>WorkerServiceTest</RootNamespace>
+        <TargetFramework>net7.0</TargetFramework>
     </PropertyGroup>
 
     <ItemGroup>
