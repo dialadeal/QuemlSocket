@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using DamlSocket.Behaviors;
+using DamlSocket.Exceptions;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Linq;
 
@@ -34,8 +35,25 @@ namespace DamlSocket.Services
             {
                 Task.Run(async () =>
                 {
-                    await (type.GetMethods().First(x => x.Name.ToLower() == request.Method.ToLower())
-                        .Invoke(typeInstance, null) as Task);
+                    try
+                    {
+                        await (((Task)type.GetMethods().First(x => string.Equals(x.Name, request.Method, StringComparison.CurrentCultureIgnoreCase))
+                            .Invoke(typeInstance, null))!);
+                    }
+                    catch (HangupException e)
+                    {
+                        Console.WriteLine(e);
+                    }
+                    catch (ServerTimeoutException e)
+                    {
+                        Console.WriteLine(e);
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e);
+                        throw;
+                    }
+                    
 
                 });
                 client.SetContext(request.Parameters as JObject);

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using DamlSocket.Exceptions;
 using Newtonsoft.Json.Linq;
 
 namespace DamlSocket.Services
@@ -17,13 +18,21 @@ namespace DamlSocket.Services
 
         public async Task<JObject> GetInputAsync(string response = null)
         {
-            if (response != null)
+            if (!string.IsNullOrWhiteSpace(response))
+            {
+                if (TcsResponse.Task.Status == TaskStatus.RanToCompletion)
+                {
+                    throw new HangupException();
+                }
+
                 TcsResponse.SetResult(response);
+            }
+
 
             var param = Task.WaitAny(Tcs.Task, Task.Delay(TimeSpan.FromMinutes(10))) == 0 ? await Tcs.Task : null;
             if (param == null)
             {
-                throw new TimeoutException();
+                throw new ServerTimeoutException();
             }
 
             Tcs = new TaskCompletionSource<JObject>();
@@ -34,9 +43,14 @@ namespace DamlSocket.Services
         {
             if (response != null)
             {
+                if (TcsResponse.Task.Status == TaskStatus.RanToCompletion)
+                {
+                    throw new HangupException();
+                }
+
                 TcsResponse.SetResult(response);
-                
-                
+
+
                 CallInProgress = false;
                 TcsResponse = new TaskCompletionSource<string>();
                 TcsInit = new TaskCompletionSource<JObject>();
