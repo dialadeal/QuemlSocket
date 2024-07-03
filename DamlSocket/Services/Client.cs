@@ -43,6 +43,7 @@ namespace DamlSocket.Services
         {
             if (response != null)
             {
+                // lets prevent An attempt was made to transition a task to a final state when it had already completed.
                 if (TcsResponse.Task.Status == TaskStatus.RanToCompletion)
                 {
                     throw new HangupException();
