@@ -15,46 +15,21 @@ using Twilio.Types;
 namespace Twilio.TwiML.Voice
 {
     /// <summary>
-    /// Gather TwiML Verb
+    /// Menu TwiML Verb
     /// </summary>
-    public class Manu : TwiML
+    public class Menu : TwiML
     {
-        public TwiML On1 { get; set; }
-
-        public TwiML On2 { get; set; }
-        public TwiML On3 { get; set; }
-
-        public TwiML On4 { get; set; }
-        public TwiML On5 { get; set; }
-
-        public TwiML On6 { get; set; }
-        public TwiML On7 { get; set; }
-
-        public TwiML On8 { get; set; }
-        public TwiML On9 { get; set; }
-        
-        public TwiML On0 { get; set; }
-        
-        public TwiML OnStar { get; set; }
-
-        public TwiML OnHash { get; set; }
-
-
-        public Manu(TwiML on1, TwiML on2, TwiML on3, TwiML on4, TwiML on5, TwiML on6, TwiML on7, TwiML on8,
-            TwiML on9, TwiML on0, TwiML onStar, TwiML onHash) : base("Manu")
+        public Menu SetKeyPress(string number,TwiML onKeyPress)
         {
-            On1 = on1;
-            On2 = on2;
-            On3 = on3;
-            On4 = on4;
-            On5 = on5;
-            On6 = on6;
-            On7 = on7;
-            On8 = on8;
-            On9 = on9;
-            On0 = on0;
-            OnStar = onStar;
-            OnHash = onHash;
+            var newChild = new KeyPress(number);
+            newChild.Append(onKeyPress);
+            this.Append(newChild);
+            return this;
+        }
+
+
+        public Menu() : base("Menu")
+        {
         }
 
         /// <summary>
@@ -73,7 +48,7 @@ namespace Twilio.TwiML.Voice
         /// <param name="voice"> Voice to use </param>
         /// <param name="loop"> Times to loop message </param>
         /// <param name="language"> Message langauge </param>
-        public Manu Say(string message = null,
+        public Menu Say(string message = null,
             Say.VoiceEnum voice = null,
             int? loop = null,
             Say.LanguageEnum language = null)
@@ -88,41 +63,19 @@ namespace Twilio.TwiML.Voice
         /// </summary>
         /// <param name="say"> A Say instance. </param>
         [System.Obsolete("This method is deprecated, use .Append() instead.")]
-        public Manu Say(Say say)
+        public Menu Say(Say say)
         {
             this.Append(say);
             return this;
         }
-
-        /// <summary>
-        /// Create a new <Pause/> element and append it as a child of this element.
-        /// </summary>
-        /// <param name="length"> Length in seconds to pause </param>
-        public Manu Pause(int? length = null)
-        {
-            var newChild = new Pause(length);
-            this.Append(newChild);
-            return this;
-        }
-
-        /// <summary>
-        /// Append a <Pause/> element as a child of this element
-        /// </summary>
-        /// <param name="pause"> A Pause instance. </param>
-        [System.Obsolete("This method is deprecated, use .Append() instead.")]
-        public Manu Pause(Pause pause)
-        {
-            this.Append(pause);
-            return this;
-        }
-
+        
         /// <summary>
         /// Create a new <Play/> element and append it as a child of this element.
         /// </summary>
         /// <param name="url"> Media URL, the body of the TwiML Element. </param>
         /// <param name="loop"> Times to loop media </param>
         /// <param name="digits"> Play DTMF tones for digits </param>
-        public Manu Play(Uri url = null, int? loop = null, string digits = null)
+        public Menu Play(Uri url = null, int? loop = null, string digits = null)
         {
             var newChild = new Play(url, loop, digits);
             this.Append(newChild);
@@ -134,7 +87,7 @@ namespace Twilio.TwiML.Voice
         /// </summary>
         /// <param name="play"> A Play instance. </param>
         [System.Obsolete("This method is deprecated, use .Append() instead.")]
-        public Manu Play(Play play)
+        public Menu Play(Play play)
         {
             this.Append(play);
             return this;
@@ -144,9 +97,29 @@ namespace Twilio.TwiML.Voice
         /// Append a child TwiML element to this element returning this element to allow chaining.
         /// </summary>
         /// <param name="childElem"> Child TwiML element to add </param>
-        public new Manu Append(TwiML childElem)
+        public new Menu Append(TwiML childElem)
         {
-            return (Manu)base.Append(childElem);
+            return (Menu)base.Append(childElem);
+        }
+    }
+    
+    public class KeyPress :TwiML 
+    {
+        public string NumberPressed { get; }
+        
+        public KeyPress(string number) : base("KeyPress")
+        {
+            this.NumberPressed = number;
+        }
+
+        protected override List<XAttribute> GetElementAttributes()
+        {
+            var attributes = new List<XAttribute>();
+            if (this.NumberPressed != null)
+            {
+                attributes.Add(new XAttribute("number", this.NumberPressed));
+            }
+            return attributes;
         }
     }
 }
