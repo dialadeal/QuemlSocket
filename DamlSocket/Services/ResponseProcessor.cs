@@ -12,6 +12,12 @@ namespace DamlSocket.Services
                 return response;
             }
 
+            // Only inject action/redirect if this is an HTTP request (indicated by RequestUri being present)
+            if (string.IsNullOrEmpty(request.RequestUri))
+            {
+                return response;
+            }
+
             var httpMethod = !string.IsNullOrEmpty(request.HttpMethod) ? request.HttpMethod : "POST";
             var actionUrl = !string.IsNullOrEmpty(request.RequestUri) ? request.RequestUri : $"?method={request.Method}";
 

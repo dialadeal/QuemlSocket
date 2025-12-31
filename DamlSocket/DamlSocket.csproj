@@ -7,7 +7,7 @@
     <Title>Daml-Socket</Title>
     <TargetFrameworks>net6.0;net8.0</TargetFrameworks>
     <IsPackable>true</IsPackable>
-    <Version>3.0.0-alpha.3</Version>
+    <Version>3.0.0-alpha.4</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <RepositoryUrl>https://github.com/dialadeal/QuemlSocket</RepositoryUrl>
