@@ -19,7 +19,12 @@ namespace DamlSocket.Services
             }
 
             var httpMethod = !string.IsNullOrEmpty(request.HttpMethod) ? request.HttpMethod : "POST";
-            var actionUrl = !string.IsNullOrEmpty(request.RequestUri) ? request.RequestUri : $"?method={request.Method}";
+            var actionUrl = request.RequestUri;
+
+            if (actionUrl.Contains("?"))
+            {
+                actionUrl = actionUrl.Split('?')[0];
+            }
 
             // List of verbs that support action and method attributes
             var verbs = new[]
