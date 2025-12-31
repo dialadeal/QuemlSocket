@@ -93,6 +93,8 @@ namespace DamlSocket.Services
 
             var response = await client.GetResponseAsync();
 
+            response = ResponseProcessor.ProcessResponse(response, request);
+
             client.CallInProgress = true;
             return response;
         }

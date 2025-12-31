@@ -55,7 +55,9 @@ namespace DamlSocket.Extensions
                     ID = Guid.NewGuid().ToString(),
                     JSONRPC = "2.0",
                     Method = method,
-                    Parameters = parameters
+                    Parameters = parameters,
+                    RequestUri = context.Request.Path + context.Request.QueryString,
+                    HttpMethod = context.Request.Method
                 };
 
                 try

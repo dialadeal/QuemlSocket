@@ -492,6 +492,36 @@
 			"type": "shell",
 			"command": "dotnet test",
 			"group": "test"
+		},
+		{
+			"label": "Run Tests",
+			"type": "shell",
+			"command": "dotnet test",
+			"group": "test"
+		},
+		{
+			"label": "Run Tests",
+			"type": "shell",
+			"command": "dotnet test",
+			"group": "test"
+		},
+		{
+			"label": "Run Tests",
+			"type": "shell",
+			"command": "dotnet test",
+			"group": "test"
+		},
+		{
+			"label": "Run Tests",
+			"type": "shell",
+			"command": "dotnet test",
+			"group": "test"
+		},
+		{
+			"label": "Run Tests",
+			"type": "shell",
+			"command": "dotnet test",
+			"group": "test"
 		}
 	]
 }

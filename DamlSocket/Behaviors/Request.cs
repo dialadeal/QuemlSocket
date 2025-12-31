@@ -15,7 +15,11 @@ namespace DamlSocket.Behaviors
         [JsonIgnore]
         internal DateTime ResponseTimeout { get; set; } = DateTime.Now.AddSeconds(DEFAULT_RESPONSE_TIMEOUT_SECONDS);
 
-        
+        [JsonIgnore]
+        public string RequestUri { get; set; }
+
+        [JsonIgnore]
+        public string HttpMethod { get; set; }
 
         [JsonProperty("jsonrpc", Required = Required.Always)]
         public string JSONRPC { get; set; } = "2.0";
