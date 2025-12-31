@@ -1,16 +1,17 @@
-<Project Sdk="Microsoft.NET.Sdk.Worker">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <UserSecretsId>dotnet-WorkerServiceSuperSocket-EE854423-61EC-4B9F-B398-A8F26004551F</UserSecretsId>
     <OutputType>Library</OutputType>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Title>Daml-Socket</Title>
-    <TargetFrameworks>net5.0;net7.0</TargetFrameworks>
+    <TargetFrameworks>net6.0;net8.0</TargetFrameworks>
     <IsPackable>true</IsPackable>
-    <Version>2.0.7</Version>
+    <Version>3.0.0-alpha</Version>
   </PropertyGroup>
 
   <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="5.0.0" />

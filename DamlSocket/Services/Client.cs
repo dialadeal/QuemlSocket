@@ -76,5 +76,10 @@ namespace DamlSocket.Services
         {
             return await TcsInit.Task;
         }
+
+        public void SetError(Exception ex)
+        {
+            TcsResponse.TrySetException(ex);
+        }
     }
 }

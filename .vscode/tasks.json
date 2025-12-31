@@ -1,0 +1,497 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Run Tests",
+			"type": "shell",
+			"command": "dotnet test DamlSocket.Tests/DamlSocket.Tests.csproj",
+			"group": "test"
+		},
+		{
+			"label": "Run Tests",
+			"type": "shell",
+			"command": "dotnet test DamlSocket.Tests/DamlSocket.Tests.csproj",
+			"group": "test"
+		},
+		{
+			"label": "Run Tests Verbose",
+			"type": "shell",
+			"command": "dotnet test DamlSocket.Tests/DamlSocket.Tests.csproj -v n",
+			"group": "test"
+		},
+		{
+			"label": "Run Tests",
+			"type": "shell",
+			"command": "dotnet test DamlSocket.Tests/DamlSocket.Tests.csproj",
+			"group": "test"
+		},
+		{
+			"label": "Run Tests",
+			"type": "shell",
+			"command": "dotnet test DamlSocket.Tests/DamlSocket.Tests.csproj",
+			"group": "test"
+		},
+		{
+			"label": "Run Tests",
+			"type": "shell",
+			"command": "dotnet test DamlSocket.Tests/DamlSocket.Tests.csproj",
+			"group": "test"
+		},
+		{
+			"label": "Run Tests",
+			"type": "shell",
+			"command": "dotnet test DamlSocket.Tests/DamlSocket.Tests.csproj",
+			"group": "test"
+		},
+		{
+			"label": "Run Tests",
+			"type": "shell",
+			"command": "dotnet test DamlSocket.Tests/DamlSocket.Tests.csproj",
+			"group": "test"
+		},
+		{
+			"label": "Run Tests",
+			"type": "shell",
+			"command": "dotnet test DamlSocket.Tests/DamlSocket.Tests.csproj",
+			"group": "test"
+		},
+		{
+			"label": "Run Tests",
+			"type": "shell",
+			"command": "dotnet test DamlSocket.Tests/DamlSocket.Tests.csproj",
+			"group": "test"
+		},
+		{
+			"label": "Run Tests",
+			"type": "shell",
+			"command": "dotnet test DamlSocket.Tests/DamlSocket.Tests.csproj",
+			"group": "test"
+		},
+		{
+			"label": "Run Tests",
+			"type": "shell",
+			"command": "dotnet test DamlSocket.Tests/DamlSocket.Tests.csproj",
+			"group": "test"
+		},
+		{
+			"label": "Run Integration Tests",
+			"type": "shell",
+			"command": "dotnet test DamlSocket.Tests/DamlSocket.Tests.csproj --filter IntegrationTests",
+			"group": "test"
+		},
+		{
+			"label": "Run Integration Tests Detailed",
+			"type": "shell",
+			"command": "dotnet test DamlSocket.Tests/DamlSocket.Tests.csproj --filter IntegrationTests --logger \"console;verbosity=detailed\"",
+			"group": "test"
+		},
+		{
+			"label": "Run Integration Tests Normal",
+			"type": "shell",
+			"command": "dotnet test DamlSocket.Tests/DamlSocket.Tests.csproj --filter IntegrationTests -v n",
+			"group": "test"
+		},
+		{
+			"label": "Run Integration Tests",
+			"type": "shell",
+			"command": "dotnet test DamlSocket.Tests/DamlSocket.Tests.csproj --filter IntegrationTests",
+			"group": "test"
+		},
+		{
+			"label": "Clean Tests",
+			"type": "shell",
+			"command": "dotnet clean DamlSocket.Tests/DamlSocket.Tests.csproj",
+			"group": "build"
+		},
+		{
+			"label": "Run Integration Tests",
+			"type": "shell",
+			"command": "dotnet test DamlSocket.Tests/DamlSocket.Tests.csproj --filter IntegrationTests",
+			"group": "test"
+		},
+		{
+			"label": "Run Integration Tests",
+			"type": "shell",
+			"command": "dotnet test DamlSocket.Tests/DamlSocket.Tests.csproj --filter IntegrationTests",
+			"group": "test"
+		},
+		{
+			"label": "Run Integration Tests Detailed",
+			"type": "shell",
+			"command": "dotnet test DamlSocket.Tests/DamlSocket.Tests.csproj --filter IntegrationTests --logger \"console;verbosity=detailed\"",
+			"group": "test"
+		},
+		{
+			"label": "Run Integration Tests Detailed 2",
+			"type": "shell",
+			"command": "dotnet test DamlSocket.Tests/DamlSocket.Tests.csproj --filter IntegrationTests --logger 'console;verbosity=detailed'",
+			"group": "test"
+		},
+		{
+			"label": "Run Integration Tests",
+			"type": "shell",
+			"command": "dotnet test DamlSocket.Tests/DamlSocket.Tests.csproj --filter IntegrationTests",
+			"group": "test"
+		},
+		{
+			"label": "Build Tests",
+			"type": "shell",
+			"command": "dotnet build DamlSocket.Tests/DamlSocket.Tests.csproj",
+			"group": "build"
+		},
+		{
+			"label": "Build Tests Detailed",
+			"type": "shell",
+			"command": "dotnet build DamlSocket.Tests/DamlSocket.Tests.csproj -v detailed",
+			"group": "build"
+		},
+		{
+			"label": "Build DamlSocket",
+			"type": "shell",
+			"command": "dotnet build DamlSocket/DamlSocket.csproj",
+			"group": "build"
+		},
+		{
+			"label": "Run Integration Tests",
+			"type": "shell",
+			"command": "dotnet test DamlSocket.Tests/DamlSocket.Tests.csproj --filter IntegrationTests",
+			"group": "test"
+		},
+		{
+			"label": "Manual Clean",
+			"type": "shell",
+			"command": "Remove-Item -Recurse -Force DamlSocket.Tests/bin; Remove-Item -Recurse -Force DamlSocket.Tests/obj",
+			"group": "clean"
+		},
+		{
+			"label": "Run Integration Tests",
+			"type": "shell",
+			"command": "dotnet test DamlSocket.Tests/DamlSocket.Tests.csproj --filter IntegrationTests",
+			"group": "test"
+		},
+		{
+			"label": "Run Integration Tests Detailed Verbosity",
+			"type": "shell",
+			"command": "dotnet test DamlSocket.Tests/DamlSocket.Tests.csproj --filter IntegrationTests -v detailed",
+			"group": "test"
+		},
+		{
+			"label": "Run Integration Tests",
+			"type": "shell",
+			"command": "dotnet test DamlSocket.Tests/DamlSocket.Tests.csproj --filter IntegrationTests",
+			"group": "test"
+		},
+		{
+			"label": "Run Integration Tests",
+			"type": "shell",
+			"command": "dotnet test DamlSocket.Tests/DamlSocket.Tests.csproj --filter IntegrationTests",
+			"group": "test"
+		},
+		{
+			"label": "Run Integration Tests",
+			"type": "shell",
+			"command": "dotnet test DamlSocket.Tests/DamlSocket.Tests.csproj --filter IntegrationTests",
+			"group": "test"
+		},
+		{
+			"label": "Search Error File",
+			"type": "shell",
+			"command": "Get-ChildItem -Path . -Recurse -Filter test_config_error.txt",
+			"group": "search"
+		},
+		{
+			"label": "Run Integration Tests",
+			"type": "shell",
+			"command": "dotnet test DamlSocket.Tests/DamlSocket.Tests.csproj --filter IntegrationTests",
+			"group": "test"
+		},
+		{
+			"label": "Delete SimpleTest",
+			"type": "shell",
+			"command": "Remove-Item DamlSocket.Tests/SimpleTest.cs",
+			"group": "clean"
+		},
+		{
+			"label": "Rename Test File",
+			"type": "shell",
+			"command": "Rename-Item DamlSocket.Tests/IntegrationTests.cs DamlSocket.Tests/MyIntegrationTests.cs",
+			"group": "rename"
+		},
+		{
+			"label": "Run Test and Check File",
+			"type": "shell",
+			"command": "dotnet test DamlSocket.Tests/DamlSocket.Tests.csproj --filter IntegrationTests; Get-ChildItem -Path . -Recurse -Filter test_config_error.txt",
+			"group": "test"
+		},
+		{
+			"label": "Run Integration Tests",
+			"type": "shell",
+			"command": "dotnet test DamlSocket.Tests/DamlSocket.Tests.csproj --filter IntegrationTests",
+			"group": "test"
+		},
+		{
+			"label": "Run Integration Tests",
+			"type": "shell",
+			"command": "dotnet test DamlSocket.Tests/DamlSocket.Tests.csproj --filter IntegrationTests",
+			"group": "test"
+		},
+		{
+			"label": "Search Error File",
+			"type": "shell",
+			"command": "Get-ChildItem -Path . -Recurse -Filter test_config_error.txt",
+			"group": "search"
+		},
+		{
+			"label": "Clean and Build",
+			"type": "shell",
+			"command": "dotnet clean; dotnet build DamlSocket.Tests/DamlSocket.Tests.csproj",
+			"group": "build"
+		},
+		{
+			"label": "Run Integration Tests",
+			"type": "shell",
+			"command": "dotnet test DamlSocket.Tests/DamlSocket.Tests.csproj --filter IntegrationTests",
+			"group": "test"
+		},
+		{
+			"label": "Search Error File",
+			"type": "shell",
+			"command": "Get-ChildItem -Path . -Recurse -Filter test_config_error.txt",
+			"group": "search"
+		},
+		{
+			"label": "Run Integration Tests Detailed",
+			"type": "shell",
+			"command": "dotnet test DamlSocket.Tests/DamlSocket.Tests.csproj --filter IntegrationTests --logger 'console;verbosity=detailed'",
+			"group": "test"
+		},
+		{
+			"label": "Run Integration Tests",
+			"type": "shell",
+			"command": "dotnet test DamlSocket.Tests/DamlSocket.Tests.csproj --filter IntegrationTests",
+			"group": "test"
+		},
+		{
+			"label": "Build Tests Detailed",
+			"type": "shell",
+			"command": "dotnet build DamlSocket.Tests/DamlSocket.Tests.csproj -v detailed",
+			"group": "build"
+		},
+		{
+			"label": "Run Integration Tests",
+			"type": "shell",
+			"command": "dotnet test DamlSocket.Tests/DamlSocket.Tests.csproj --filter IntegrationTests",
+			"group": "test"
+		},
+		{
+			"label": "Run Integration Tests",
+			"type": "shell",
+			"command": "dotnet test DamlSocket.Tests/DamlSocket.Tests.csproj --filter IntegrationTests",
+			"group": "test"
+		},
+		{
+			"label": "Build and Log",
+			"type": "shell",
+			"command": "dotnet build DamlSocket.Tests/DamlSocket.Tests.csproj > build_output.txt",
+			"group": "build"
+		},
+		{
+			"label": "Search Post Error File",
+			"type": "shell",
+			"command": "Get-ChildItem -Path . -Recurse -Filter test_post_error.txt",
+			"group": "search"
+		},
+		{
+			"label": "Search Server Error File",
+			"type": "shell",
+			"command": "Get-ChildItem -Path . -Recurse -Filter test_server_error.txt",
+			"group": "search"
+		},
+		{
+			"label": "Run Integration Tests",
+			"type": "shell",
+			"command": "dotnet test DamlSocket.Tests/DamlSocket.Tests.csproj --filter IntegrationTests",
+			"group": "test"
+		},
+		{
+			"label": "Search Response File",
+			"type": "shell",
+			"command": "Get-ChildItem -Path . -Recurse -Filter test_response.txt",
+			"group": "search"
+		},
+		{
+			"label": "Run Integration Tests",
+			"type": "shell",
+			"command": "dotnet test DamlSocket.Tests/DamlSocket.Tests.csproj --filter IntegrationTests",
+			"group": "test"
+		},
+		{
+			"label": "Restore Tests",
+			"type": "shell",
+			"command": "dotnet restore DamlSocket.Tests/DamlSocket.Tests.csproj",
+			"group": "restore"
+		},
+		{
+			"label": "Build Tests",
+			"type": "shell",
+			"command": "dotnet build DamlSocket.Tests/DamlSocket.Tests.csproj",
+			"group": "build"
+		},
+		{
+			"label": "Run Integration Tests",
+			"type": "shell",
+			"command": "dotnet test DamlSocket.Tests/DamlSocket.Tests.csproj --filter IntegrationTests",
+			"group": "test"
+		},
+		{
+			"label": "Run Integration Tests",
+			"type": "shell",
+			"command": "dotnet test DamlSocket.Tests/DamlSocket.Tests.csproj --filter IntegrationTests",
+			"group": "test"
+		},
+		{
+			"label": "Run Integration Tests",
+			"type": "shell",
+			"command": "dotnet test DamlSocket.Tests/DamlSocket.Tests.csproj --filter IntegrationTests",
+			"group": "test"
+		},
+		{
+			"label": "Run Integration Tests",
+			"type": "shell",
+			"command": "dotnet test DamlSocket.Tests/DamlSocket.Tests.csproj --filter IntegrationTests",
+			"group": "test"
+		},
+		{
+			"label": "Run Integration Tests",
+			"type": "shell",
+			"command": "dotnet test DamlSocket.Tests/DamlSocket.Tests.csproj --filter IntegrationTests",
+			"group": "test"
+		},
+		{
+			"label": "Clean DamlSocket",
+			"type": "shell",
+			"command": "dotnet clean DamlSocket/DamlSocket.csproj",
+			"group": "clean"
+		},
+		{
+			"label": "Run Integration Tests",
+			"type": "shell",
+			"command": "dotnet test DamlSocket.Tests/DamlSocket.Tests.csproj --filter IntegrationTests",
+			"group": "test"
+		},
+		{
+			"label": "Delete IntegrationTests",
+			"type": "shell",
+			"command": "Remove-Item DamlSocket.Tests/IntegrationTests.cs",
+			"group": "clean"
+		},
+		{
+			"label": "Run MyTests",
+			"type": "shell",
+			"command": "dotnet test DamlSocket.Tests/DamlSocket.Tests.csproj",
+			"group": "test"
+		},
+		{
+			"label": "Run Integration Tests",
+			"type": "shell",
+			"command": "dotnet test DamlSocket.Tests/DamlSocket.Tests.csproj --filter IntegrationTests",
+			"group": "test"
+		},
+		{
+			"label": "Run Integration Tests",
+			"type": "shell",
+			"command": "dotnet test DamlSocket.Tests/DamlSocket.Tests.csproj --filter IntegrationTests",
+			"group": "test"
+		},
+		{
+			"label": "Run Integration Tests",
+			"type": "shell",
+			"command": "dotnet test DamlSocket.Tests/DamlSocket.Tests.csproj --filter IntegrationTests",
+			"group": "test"
+		},
+		{
+			"label": "Run Integration Tests",
+			"type": "shell",
+			"command": "dotnet test DamlSocket.Tests/DamlSocket.Tests.csproj --filter IntegrationTests",
+			"group": "test"
+		},
+		{
+			"label": "Run Integration Tests",
+			"type": "shell",
+			"command": "dotnet test DamlSocket.Tests/DamlSocket.Tests.csproj --filter IntegrationTests",
+			"group": "test"
+		},
+		{
+			"label": "Run Integration Tests",
+			"type": "shell",
+			"command": "dotnet test DamlSocket.Tests/DamlSocket.Tests.csproj --filter IntegrationTests",
+			"group": "test"
+		},
+		{
+			"label": "Run Integration Tests",
+			"type": "shell",
+			"command": "dotnet test DamlSocket.Tests/DamlSocket.Tests.csproj --filter IntegrationTests",
+			"group": "test"
+		},
+		{
+			"label": "Run Integration Tests",
+			"type": "shell",
+			"command": "dotnet test DamlSocket.Tests/DamlSocket.Tests.csproj --filter IntegrationTests",
+			"group": "test"
+		},
+		{
+			"label": "Run Integration Tests",
+			"type": "shell",
+			"command": "dotnet test DamlSocket.Tests/DamlSocket.Tests.csproj --filter IntegrationTests",
+			"group": "test"
+		},
+		{
+			"label": "Run Integration Tests",
+			"type": "shell",
+			"command": "dotnet test DamlSocket.Tests/DamlSocket.Tests.csproj --filter IntegrationTests",
+			"group": "test"
+		},
+		{
+			"label": "Remove Temp File",
+			"type": "shell",
+			"command": "Remove-Item test_server_error.txt -ErrorAction SilentlyContinue",
+			"group": "clean"
+		},
+		{
+			"label": "Run Tests",
+			"type": "shell",
+			"command": "dotnet test",
+			"group": "test"
+		},
+		{
+			"label": "Run Tests",
+			"type": "shell",
+			"command": "dotnet test",
+			"group": "test"
+		},
+		{
+			"label": "Run Tests",
+			"type": "shell",
+			"command": "dotnet test",
+			"group": "test"
+		},
+		{
+			"label": "Run Tests",
+			"type": "shell",
+			"command": "dotnet test",
+			"group": "test"
+		},
+		{
+			"label": "Run Tests",
+			"type": "shell",
+			"command": "dotnet test",
+			"group": "test"
+		},
+		{
+			"label": "Run Tests",
+			"type": "shell",
+			"command": "dotnet test",
+			"group": "test"
+		}
+	]
+}

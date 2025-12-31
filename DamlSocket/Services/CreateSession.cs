@@ -21,12 +21,39 @@ namespace DamlSocket.Services
         public async Task<string> welcome(Request request)
         {
             var types = AppDomain.CurrentDomain.GetAssemblies()
-                .SelectMany(s => s.GetTypes());
+                .SelectMany(s => 
+                {
+                    try
+                    {
+                        return s.GetTypes();
+                    }
+                    catch (System.Reflection.ReflectionTypeLoadException e)
+                    {
+                        return e.Types.Where(t => t != null);
+                    }
+                    catch
+                    {
+                        return Type.EmptyTypes;
+                    }
+                });
 
             var type = types
                 .FirstOrDefault(x => x.GetMethods().Any(c => string.Equals(c.Name, request.Method, StringComparison.OrdinalIgnoreCase)));
 
-            var scope = CallScope.CreateOrGetScope((request.Parameters as JObject)["callSid"].ToString(),
+            if (type == null)
+            {
+                throw new Exception($"Method '{request.Method}' not found in any type.");
+            }
+
+            var parameters = request.Parameters as JObject;
+            var callSid = parameters.GetValue("callSid", StringComparison.OrdinalIgnoreCase)?.ToString();
+            
+            if (string.IsNullOrEmpty(callSid))
+            {
+                 throw new Exception("callSid not found in parameters.");
+            }
+
+            var scope = CallScope.CreateOrGetScope(callSid,
                 _serviceProvider);
             var client = scope.ServiceProvider.GetRequiredService(typeof(Client)) as Client;
             var typeInstance = scope.ServiceProvider.GetRequiredService(type);
@@ -51,7 +78,7 @@ namespace DamlSocket.Services
                     catch (Exception e)
                     {
                         Console.WriteLine(e);
-                        throw;
+                        client.SetError(e);
                     }
                     
 
